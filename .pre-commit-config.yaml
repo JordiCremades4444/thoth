@@ -35,15 +35,3 @@ repos:
     hooks:
       - id: isort
         stages: [pre-commit, pre-push]
-
-  - repo: https://github.com/nbQA-dev/nbQA
-    rev: 1.2.0
-    hooks:
-      - id: nbqa-black
-        args: ["--nbqa-mutate"]
-        stages: [pre-commit, pre-push]
-      - id: nbqa-flake8
-        stages: [pre-commit, pre-push]
-      - id: nbqa-isort
-        args: ["--nbqa-mutate"]
-        stages: [pre-commit, pre-push]
