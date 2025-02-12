@@ -29,6 +29,9 @@ repos:
       - id: sqlfluff-lint
         args: ["--dialect", "postgres"]
         stages: [pre-commit, pre-push]
+      - id: sqlfluff-fix
+        args: ["--dialect", "postgres"]
+        stages: [pre-commit, pre-push]
 
   - repo: https://github.com/pre-commit/mirrors-isort
     rev: v5.9.3
