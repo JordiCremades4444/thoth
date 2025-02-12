@@ -12,6 +12,7 @@ jupyter = "^1.1.1"
 pre-commit = "^4.1.0"
 pandas = "^2.2.3"
 setuptools = "^75.8.0"
+mysql = "^0.0.3"
 
 
 [build-system]
