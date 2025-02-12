@@ -23,16 +23,6 @@ repos:
       - id: flake8
         stages: [pre-commit, pre-push]
 
-  - repo: https://github.com/sqlfluff/sqlfluff
-    rev: 1.0.0
-    hooks:
-      - id: sqlfluff-lint
-        args: ["--dialect", "postgres", "--templater", "jinja"]
-        stages: [pre-commit, pre-push]
-      - id: sqlfluff-fix
-        args: ["--dialect", "postgres", "--templater", "jinja", "--force"]
-        stages: [pre-commit, pre-push]
-
   - repo: https://github.com/pre-commit/mirrors-isort
     rev: v5.9.3
     hooks:
