@@ -169,3 +169,8 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# Ignore query log and output folders
+query_log/
+query_outputs/
+query_logs/
