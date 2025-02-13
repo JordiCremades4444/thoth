@@ -22,3 +22,7 @@ matplotlib = "^3.10.0"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.dependencies]
+# existing dependencies...
+flake8-black = "^0.3.0"
