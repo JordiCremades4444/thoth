@@ -17,13 +17,6 @@ repos:
       - id: black
         stages: [pre-commit, pre-push]
 
-  - repo: https://github.com/PyCQA/flake8
-    rev: 6.0.0
-    hooks:
-      - id: flake8
-        stages: [pre-commit, pre-push]
-        additional_dependencies: [flake8-black]
-
   - repo: https://github.com/pre-commit/mirrors-isort
     rev: v5.9.3
     hooks:
