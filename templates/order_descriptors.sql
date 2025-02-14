@@ -1,4 +1,4 @@
-,order_descriptors as (
+,order_descriptors_v2 as (
     select
         order_id,
         customer_id,

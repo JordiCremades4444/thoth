@@ -526,6 +526,6 @@
         custom_attributes__recovery_origin,
         custom_attributes__loaded_widget_ids,
         custom_attributes__search_taxonomy_classifier,
-    from sensitive_delta.customer_mpcustomer_odp.custom_event cu
+    from sensitive_delta.customer_mpcustomer_odp.custom_event
     where true
 )
