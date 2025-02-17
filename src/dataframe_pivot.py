@@ -21,6 +21,9 @@ class DataFramePivot:
         Returns:
             pd.DataFrame: Pivoted and aggregated DataFrame.
         """
+        # Convert the time column to datetime
+        self.df[t] = pd.to_datetime(self.df[t])
+
         # Create a dictionary for aggregation functions
         agg_dict = {measure: aggfuncs for measure in measures}
 
