@@ -11,6 +11,10 @@ This analysis answers some questions regarding customer navigation using the Tab
 
 ## Key Visuals
 - ![Tab Bar Navigation](assets/picture.png)
+- From a business perspective, we define the Navigation Tab Bar as shown in this image. However, it is also triggered in other unwanted scenarios.
+- ![Tab Bar Navigation](assets/restaurant.jpeg)
+- Within restaurants, scrolling up and down can inadvertently trigger the Navigation Tab Bar impression. This behavior is unexpected.
+- Conversely, this issue does not occur with Groceries. For instance, while accessing Veritas and scrolling up and down, the event did not trigger until I oppened a Collection.
 
 ## References
 - None
