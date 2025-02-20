@@ -4,16 +4,6 @@ with calendar_dates as (select
     where true
 )
 
-,home_sessions as (
-    select
-        p_creation_date as creation_date,
-        count(distinct h.dynamic_session_id) as n_sessions
-    from delta.customer_behaviour_odp.enriched_screen_view__home_v3 h
-    where true
-        and p_creation_date in (select calendar_date from calendar_dates)
-    group by 1
-)
-
 ,groceries_stores as (
     select distinct
         sa.store_address_id,
@@ -45,6 +35,18 @@ with calendar_dates as (select
         and collection_group_name != 'Unknown'
     group by 1
     having count(distinct collection_group_name) > 2
+)
+
+,navigation_impression_sessions as (
+    select
+        creation_date,
+        count(distinct cu.dynamic_session_id) as n_sessions
+    from sensitive_delta.customer_mpcustomer_odp.custom_event cu
+    where true
+        and cu.creation_date in (select calendar_date from calendar_dates)
+        and cu.event_name = 'Store Mobile Navigation Bar Impression'
+        and cu.custom_attributes__store_address_id in (select cast(store_address_id as varchar) from groceries_stores)
+    group by 1
 )
 
 ,navigation_tapped as (
@@ -110,11 +112,11 @@ with calendar_dates as (select
 )
 
 select
-    h.creation_date,
-    h.n_sessions,
+    nis.creation_date,
+    nis.n_sessions,
     nt.bar_collection_taps_events,
     nt.bar_supercollection_taps_events,
     nt.bar_any_taps_events
-from home_sessions h
+from navigation_impression_sessions nis
 left join navigation_taps nt
-    on h.creation_date = nt.creation_date
+    on nis.creation_date = nt.creation_date
