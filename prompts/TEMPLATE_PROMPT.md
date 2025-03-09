@@ -16,7 +16,8 @@ Ensure that the readibility and profesionalism of the text is top class.
 3. **Include**:
    - **Title**: Reflect the analysis name.
    - **Summary**: Briefly describe the purpose, main questions, and context.
-   - **References**: Link to relevant documents (PIDs, Confluence, Figma, dashboards).
+   - **Objective**: Leave this section blank. I will write it.
    - **Key Visuals**: If applicable, reference images in the `assets/` folder.
+   - **References**: Leave this section blank. I will write is.
 
 - Do not and extra sections besides the ones mentioned above.
