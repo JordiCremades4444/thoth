@@ -56,8 +56,9 @@ with calendar_dates as (select
 ,gifting_orders_with_instructions as (
     select distinct
         go.p_ingestion_date as p_creation_date,
-        go.order_id,
-        go.gifting_instructions as instructions
+        orderid as go.order_id,
+        giftreceiptrequested,
+        giftmessagerequested
     from delta.tech__shopping_core_gifting_analytics_order_gifting_v0__odp.shoppingcore_gifting_ordergiftingcreatedevent go
     inner join calendar_dates
         on go.p_ingestion_date = calendar_dates.calendar_date
