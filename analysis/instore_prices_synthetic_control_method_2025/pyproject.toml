@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "instore-prices-synthetic-control-method-2025"
+version = "0.1.0"
+description = ""
+authors = ["JordiCremades4444 <jordicremadesrosell@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.9,<3.13"
+causalimpact = "^0.2.6"
+numpy = "1.26.4"
+pytensor = "2.19.0"
+ipykernel = "^6.29.5"
+scipy = "1.12.0"
+pandas = "1.3.5"
+mysql = "^0.0.3"
+mysql-connector-python = "^9.2.0"
+trino = "^0.333.0"
+python-dotenv = "^1.0.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
