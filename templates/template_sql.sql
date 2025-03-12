@@ -52,6 +52,18 @@ with calendar_dates as (select
     where true
 )
 
+-- I've not seen duplicated orders in the table, but be careful
+,gifting_orders_with_instructions as (
+    select distinct
+        go.p_ingestion_date as p_creation_date,
+        go.order_id,
+        go.gifting_instructions as instructions
+    from delta.tech__shopping_core_gifting_analytics_order_gifting_v0__odp.shoppingcore_gifting_ordergiftingcreatedevent go
+    inner join calendar_dates
+        on go.p_ingestion_date = calendar_dates.calendar_date
+    where true
+)
+
 ,pna_orders_info as (
     select
         poi.p_creation_date,
