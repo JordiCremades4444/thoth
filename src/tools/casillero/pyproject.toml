@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "casillero"
+version = "0.1.0"
+description = ""
+authors = ["JordiCremades4444 <jordicremadesrosell@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+pyyaml = "^6.0.2"
+pillow = "^11.1.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
