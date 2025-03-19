@@ -7,7 +7,8 @@ thoth/
 ├── .env
 ├── src/
 │   ├── utils/ # classes
-│   ├── analysis/ # all analysis and scripts
+│   ├── tools/ # scripts used as tools
+│   ├── analysis/ # analysis
 │       ├── analysis_2025/
 │           ├── analysis.ipynb
 │           ├── sql/
