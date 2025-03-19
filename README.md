@@ -2,6 +2,7 @@
 
 ## Repository Structure
 
+```
 thoth/
 ├── .env # sensitive data
 ├── src/ # all code
@@ -14,3 +15,4 @@ thoth/
 │           ├── poetry.lock # Poetry lock file for dependencies
 │           ├── pyproject.toml # Poetry configuration file
 ├── templates/ # code for copy pasting
+```
