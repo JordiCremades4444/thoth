@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "utils-tests-2025"
+version = "0.1.0"
+description = ""
+authors = ["JordiCremades4444 <jordicremadesrosell@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+ipykernel = "^6.29.5"
+pandas = "^2.2.3"
+mysql-connector-python = "^9.2.0"
+trino = "^0.333.0"
+python-dotenv = "^1.0.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -6,14 +6,12 @@ with calendar_dates as (select
 
 select
     p_creation_date,
-    order_id,
+    order_country_code,
     order_final_status,
-    order_vertical,
-    order_total_purchase_eur,
-    order_total_purchase_local
+    count(distinct order_id) as n_orders
 from delta.central_order_descriptors_odp.order_descriptors_v2
-inner join calendar_dates
-    on order_descriptors_v2.p_creation_date = calendar_dates.calendar_date
 where true
-    and order_city_code in ({cities})
-order by 1 asc
+    and p_creation_date in (select calendar_date from calendar_dates)
+    and order_country_code in ('ES','PT')
+group by 1,2,3
+order by 1,2,3,4
