@@ -1,5 +1,2 @@
-# filepath: /Users/jordicremades/Documents/repos/thoth/casillero/config.yaml
 pictures_folder: "pictures"
-start_number: 0 # 0 is the first number
-end_number: 25 # 99 is the last number
-number_of_pictures: 10
+number_of_pictures: 100

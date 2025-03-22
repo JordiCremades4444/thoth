@@ -23,10 +23,19 @@ def ensure_folder_exists(folder_path):
         exit(1)
 
 
-def ensure_picture_exists(folder_path, picture_number):
-    picture_path = f"{folder_path}/{picture_number}.png"
-    if not os.path.exists(picture_path):
-        print(f"Error: Picture '{picture_path}' does not exist.")
+def get_image_files(folder_path):
+    try:
+        files = [
+            f
+            for f in os.listdir(folder_path)
+            if f.lower().endswith((".png", ".jpg", ".jpeg"))
+        ]
+        if not files:
+            print(f"Error: No image files found in folder '{folder_path}'.")
+            exit(1)
+        return files
+    except Exception as e:
+        print(f"Error accessing folder '{folder_path}': {e}")
         exit(1)
 
 
@@ -34,26 +43,25 @@ def main():
     # Load configuration
     config = load_config()
     pictures_folder = config.get("pictures_folder")
-    start_number = config.get("start_number")
-    end_number = config.get("end_number")
     number_of_pictures = config.get("number_of_pictures")
 
     ensure_folder_exists(pictures_folder)
 
+    # Get all image files in the folder
+    image_files = get_image_files(pictures_folder)
+
     # Question loop
     for i in range(0, number_of_pictures):
-        random_number = random.randint(start_number, end_number)
-        print(f"({i+1}/{number_of_pictures}) Random Number: {random_number}")
+        random_file = random.choice(image_files)
+        print(f"({i+1}/{number_of_pictures}) Random File: {random_file}")
 
         input("Press Enter to see the image...")
 
-        ensure_picture_exists(pictures_folder, random_number)
-
         try:
-            with Image.open(f"{pictures_folder}/{random_number}.png") as img:
+            with Image.open(os.path.join(pictures_folder, random_file)) as img:
                 img.show()
         except Exception as e:
-            print(f"Error displaying image '{random_number}.png': {e}")
+            print(f"Error displaying image '{random_file}': {e}")
             exit(1)
 
 
