@@ -1,8 +1,8 @@
+import json
 import os
 import random
 
 import yaml
-from PIL import Image
 
 
 def load_config(config_path="config.yaml"):
@@ -17,52 +17,42 @@ def load_config(config_path="config.yaml"):
         exit(1)
 
 
-def ensure_folder_exists(folder_path):
-    if not os.path.exists(folder_path):
-        print(f"Error: Folder '{folder_path}' does not exist.")
+def ensure_file_exists(file_path):
+    if not os.path.exists(file_path):
+        print(f"Error: File '{file_path}' does not exist.")
         exit(1)
 
 
-def get_image_files(folder_path):
+def load_json(file_path):
     try:
-        files = [
-            f
-            for f in os.listdir(folder_path)
-            if f.lower().endswith((".png", ".jpg", ".jpeg"))
-        ]
-        if not files:
-            print(f"Error: No image files found in folder '{folder_path}'.")
-            exit(1)
-        return files
-    except Exception as e:
-        print(f"Error accessing folder '{folder_path}': {e}")
+        with open(file_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+            return data
+    except FileNotFoundError:
+        print(f"Error: JSON file '{file_path}' not found.")
+        exit(1)
+    except json.JSONDecodeError as e:
+        print(f"Error parsing JSON file: {e}")
         exit(1)
 
 
 def main():
     # Load configuration
     config = load_config()
-    pictures_folder = config.get("pictures_folder")
-    number_of_pictures = config.get("number_of_pictures")
 
-    ensure_folder_exists(pictures_folder)
+    json_file_path = config.get("casillero_file")
+    number_of_questions = config.get("number_of_questions")
 
-    # Get all image files in the folder
-    image_files = get_image_files(pictures_folder)
+    ensure_file_exists(json_file_path)
 
-    # Question loop
-    for i in range(0, number_of_pictures):
-        random_file = random.choice(image_files)
-        print(f"({i+1}/{number_of_pictures}) Random File: {random_file}")
+    data = load_json(json_file_path)
 
-        input("Press Enter to see the image...")
-
-        try:
-            with Image.open(os.path.join(pictures_folder, random_file)) as img:
-                img.show()
-        except Exception as e:
-            print(f"Error displaying image '{random_file}': {e}")
-            exit(1)
+    # Loop number_of_questions times and select a random item each time
+    for i in range(1, number_of_questions + 1):
+        selected_item = random.choice(list(data.items()))
+        print(f"({i}/{number_of_questions}) Selected Key: {selected_item[0]}")
+        input("Press Enter to continue...")
+        print(f"Value: {selected_item[1]}")
 
 
 if __name__ == "__main__":

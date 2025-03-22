@@ -1,2 +1,2 @@
-pictures_folder: "pictures"
-number_of_pictures: 100
+number_of_questions: 100
+casillero_file: casillero.json
