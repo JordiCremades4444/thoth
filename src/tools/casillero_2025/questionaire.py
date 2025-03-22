@@ -43,7 +43,7 @@ def main():
     # Question loop
     for i in range(0, number_of_pictures):
         random_number = random.randint(start_number, end_number)
-        print(f"Random Number: {random_number}")
+        print(f"({i+1}/{number_of_pictures}) Random Number: {random_number}")
 
         input("Press Enter to see the image...")
 
