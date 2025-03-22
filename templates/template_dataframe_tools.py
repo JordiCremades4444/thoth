@@ -52,7 +52,6 @@ plot_params = [
         "x_column": [1],
         "y_columns": [2, 3],
         "colors": ["b", "o"],  # ['o','g','r','pu','br','pi','gr','ol','cy']
-        "styles": ["-", "-"],  # ['--'. '-', ':']
         "legend": True,
     },
 ]

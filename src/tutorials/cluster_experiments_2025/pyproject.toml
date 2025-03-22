@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "cluster-experiments-2025"
+version = "0.1.0"
+description = ""
+authors = ["JordiCremades4444 <jordicremadesrosell@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10,<3.13"
+numpy = "^2.2.4"
+pandas = "^2.2.3"
+cluster-experiments = "^0.25.0"
+ipykernel = "^6.29.5"
+matplotlib = "^3.10.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
