@@ -4,7 +4,6 @@
 
 ```
 thoth/
-├── .env
 ├── src/
 │   ├── analysis/
 │   ├── tests/
