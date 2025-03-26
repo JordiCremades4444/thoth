@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "query-playground-2025"
+version = "0.1.0"
+description = ""
+authors = ["JordiCremades4444 <jordicremadesrosell@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+ipykernel = "^6.29.5"
+jupyter = "^1.1.1"
+mysql = "^0.0.3"
+pymysql = "^1.1.1"
+mysql-connector-python = "^9.2.0"
+pandas = "^2.2.3"
+trino = "^0.333.0"
+dotenv = "^0.9.9"
+matplotlib = "^3.10.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
