@@ -12,6 +12,8 @@ pandas = "^2.2.3"
 mysql-connector-python = "^9.2.0"
 trino = "^0.333.0"
 python-dotenv = "^1.0.1"
+jupyter = "^1.1.1"
+google-cloud-bigquery = "^3.31.0"
 
 
 [build-system]

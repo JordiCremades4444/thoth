@@ -4,6 +4,7 @@ import mysql.connector
 import pandas as pd
 import trino
 from dotenv import load_dotenv
+from google.cloud import bigquery
 
 
 class QueryEngines:
@@ -30,6 +31,7 @@ class QueryEngines:
         self.__ensure_directory_exists(self.sql_path)
         self.__ensure_directory_exists(self.query_log_path)
         self.__ensure_directory_exists(self.output_path)
+        self.__authenticate_bigquery()
 
     def __ensure_directory_exists(self, directory_path):
         if not os.path.exists(directory_path):
@@ -76,6 +78,15 @@ class QueryEngines:
         conn_details = self.__get_conn_details_starburst()
         with trino.dbapi.connect(**conn_details) as conn:
             df = pd.read_sql(query_replaced, conn)
+
+        return df
+
+    def __query_data_bigquery(self, query_replaced):
+        clint = bigquery.Client(project="dhub-data-commune")
+
+        query_job = clint.query(query_replaced)
+        rows = query_job.result()
+        df = pd.DataFrame([dict(row) for row in rows])
 
         return df
 
@@ -133,5 +144,37 @@ class QueryEngines:
         query = self.__build_sql_query(table_name)
 
         df = self.__query_data_trino(query)
+
+        return df
+
+    def __authenticate_bigquery(self):
+        os.system("gcloud auth application-default login --billing-project dhub-glovo")
+
+    def run_query_bigquery(
+        self, query_file, params=None, csv_file=None, load_csv_file=False
+    ):
+        """
+        Runs the SQL query or loads from a CSV file on the BigQuery database.
+        """
+
+        if load_csv_file:
+            self.__ensure_file_exists(os.path.join(self.output_path, f"{csv_file}.csv"))
+
+            df = self.__load_from_csv(csv_file)
+
+        else:
+            self.__ensure_file_exists(
+                os.path.join(self.sql_path, query_file)
+            )  # Check if the file exists
+
+            query_replaced = self.__prepare_query(
+                query_file, params
+            )  # Prepare the query
+
+            self.__log_query(query_replaced)  # Log the query
+
+            df = self.__query_data_bigquery(query_replaced)  # Run the query
+
+            self.__save_to_csv(df, csv_file)  # Save the query results to a CSV file
 
         return df
