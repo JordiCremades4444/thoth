@@ -4,10 +4,10 @@
 
 pivot_params = {
     "df": df,
-    "t": ["X"],
-    "dimensions": ["X", "X"],
-    "measures": ["X", "X"],
-    "aggfuncs": ["X", "X"],
+    "index": [1],
+    "columns": [2],
+    "values": [4],
+    "aggfuncs": ["sum"],
 }
 
 p = dataframe_tools.Pivot(df, pivot_params).run_pivot()
