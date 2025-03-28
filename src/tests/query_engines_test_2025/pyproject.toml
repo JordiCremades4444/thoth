@@ -14,6 +14,7 @@ trino = "^0.333.0"
 python-dotenv = "^1.0.1"
 jupyter = "^1.1.1"
 google-cloud-bigquery = "^3.31.0"
+pandas-gbq = "^0.28.0"
 
 
 [build-system]
