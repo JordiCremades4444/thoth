@@ -8,6 +8,12 @@ with calendar_dates as (select
     where true
 )
 
+with calendar_dates as (select
+    calendar_date
+    from unnest(generate_date_array(date({start_date}),date({end_date}),interval '1' day)) as calendar_date
+    where true
+)
+
 -- =====================================
 -- Starburst
 -- =====================================
