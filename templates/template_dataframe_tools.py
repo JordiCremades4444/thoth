@@ -4,7 +4,7 @@
 
 pivot_params = {
     "df": df,
-    "t": "X",
+    "t": ["X"],
     "dimensions": ["X", "X"],
     "measures": ["X", "X"],
     "aggfuncs": ["X", "X"],
