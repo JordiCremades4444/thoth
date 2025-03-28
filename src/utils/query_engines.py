@@ -82,7 +82,7 @@ class QueryEngines:
         return df
 
     def __query_data_bigquery(self, query_replaced):
-        clint = bigquery.Client(project="dhub-data-commune")
+        clint = bigquery.Client(project="dhub-glovo")
 
         query_job = clint.query(query_replaced)
         rows = query_job.result()
