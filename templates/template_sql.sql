@@ -9,13 +9,14 @@ with calendar_dates as (select
 )
 
 -- =====================================
--- Relevant tables
+-- Starburst
 -- =====================================
 
 delta.central__retention_orders__odp.retention_order_info
 delta.central_geography_odp.cities_v2
 delta.central_order_descriptors_odp.order_descriptors_v2
 delta.central_users_odp.users_v2
+delta.customer__funwithflags_experiment_assignments_daily__odp.funwithflags_experiment_assignments_daily
 delta.customer_behaviour_odp.enriched_custom_event__category_group_opened_v3
 delta.customer_behaviour_odp.enriched_custom_event__category_opened_v3
 delta.customer_behaviour_odp.enriched_custom_event__order_created_v3
@@ -34,3 +35,9 @@ delta.partner_stores_odp.stores_v2
 delta.tech__partner_order_analytics_order_dispatched_with_pna_v0__odp.partner_orders_orderdispatchedtopartnerwithpnaanalyticsevent
 delta.tech__shopping_core_gifting_analytics_order_gifting_v0__odp.shoppingcore_gifting_ordergiftingcreatedevent
 sensitive_delta.customer_mpcustomer_odp.custom_event
+
+
+-- =====================================
+-- BigQuery
+-- =====================================
+fulfillment-dwh-production.curated_data_shared_experimentation.experiment_assignment_glovo

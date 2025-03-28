@@ -178,3 +178,14 @@ class QueryEngines:
             self.__save_to_csv(df, csv_file)  # Save the query results to a CSV file
 
         return df
+
+    def run_table_explorer_bigquery(self, table_name):
+        """
+        Returns a DataFrame of a table. Used for exploratory data analysis.
+        """
+
+        query = self.__build_sql_query(table_name)
+
+        df = self.__query_data_bigquery(query)
+
+        return df
