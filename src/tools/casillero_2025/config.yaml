@@ -1,2 +1,4 @@
 number_of_questions: 100
 casillero_file: casillero.json
+lower_bound: 0
+upper_bound: 100
