@@ -1,3 +1,4 @@
+import csv
 import random
 import time
 
@@ -14,6 +15,18 @@ def load_config(config_path="config.yaml"):
     except yaml.YAMLError as e:
         print(f"Error parsing YAML file: {e}")
         exit(1)
+
+
+def save_to_csv(numbers, output_file="timer_output.csv"):
+    try:
+        with open(output_file, mode="w", newline="") as file:
+            writer = csv.writer(file)
+            writer.writerow(["Index", "Number"])  # Write header
+            for index, number in enumerate(numbers, start=1):
+                writer.writerow([index, number])  # Write each number
+        print(f"Numbers saved to {output_file}")
+    except Exception as e:
+        print(f"Error saving to CSV: {e}")
 
 
 def main():
@@ -42,6 +55,9 @@ def main():
         print("Invalid input. Please enter an integer value for seconds.")
         return
 
+    # Collect numbers
+    numbers = []
+
     # Loop to show the numbers
     for i in range(1, num_questions + 1):
         print(f"Waiting for {seconds} seconds...")
@@ -50,6 +66,10 @@ def main():
         # Generate and display a random number
         random_number = random.randint(lower_bound, upper_bound)
         print(f"Number ({i}/{num_questions}) is {random_number}")
+        numbers.append(random_number)  # Collect the number
+
+    # Save numbers to CSV
+    save_to_csv(numbers)
 
 
 if __name__ == "__main__":
