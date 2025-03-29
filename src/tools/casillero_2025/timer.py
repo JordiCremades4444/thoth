@@ -21,7 +21,7 @@ def save_to_csv(numbers, output_file="timer_output.csv"):
     try:
         with open(output_file, mode="w", newline="") as file:
             writer = csv.writer(file)
-            writer.writerow(["Index", "Number"])  # Write header
+            writer.writerow(["Number"])  # Write header
             for index, number in enumerate(numbers, start=1):
                 writer.writerow([index, number])  # Write each number
         print(f"Numbers saved to {output_file}")

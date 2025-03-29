@@ -174,3 +174,7 @@ cython_debug/
 query_log/
 query_outputs/
 query_logs/
+
+# Adhoc
+timer_output.csv
+.DS_Store
